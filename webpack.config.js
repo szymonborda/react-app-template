@@ -1,5 +1,6 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const context = __dirname;
 
 module.exports = {
     entry: './src/index.js',
@@ -8,30 +9,36 @@ module.exports = {
         filename: 'bundle.js'
     },
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['es2015', 'react']
+                        cacheDirectory: false,
+                        presets: ['es2015', 'react'],
+                        plugins: [
+                            [
+                                'react-css-modules',
+                                {
+                                    context
+                                }
+                            ]
+                        ]
                     }
                 }
             },
             {
-                test: /\.scss$/,
+                test: /\.css$/,
                 use: ExtractTextPlugin.extract({
                     use: [{
                         loader: 'css-loader',
                         options: {
-                            modules: true,
                             importLoaders: 1,
-                            localIdentName: "[name]__[local]___[hash:base64:5]"
+                            modules: true,
+                            sourceMap: true,
+                            localIdentName: '[path]___[name]__[local]___[hash:base64:5]'
                         }
-                    },
-                    {
-                        loader: 'sass-loader'
                     }],
                     fallback: {
                         loader: 'style-loader',
@@ -41,9 +48,9 @@ module.exports = {
                     }
                 })
             }
-    ]
+        ]
     },
     plugins: [
-    new ExtractTextPlugin("styles.css")
-  ]
+        new ExtractTextPlugin("styles.css")
+    ]
 };

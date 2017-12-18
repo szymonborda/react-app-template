@@ -950,9 +950,7 @@ var _reactDom = __webpack_require__(18);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _app = __webpack_require__(27);
-
-var _app2 = _interopRequireDefault(_app);
+__webpack_require__(27);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -976,8 +974,8 @@ var App = function (_React$Component) {
         value: function render() {
             return _react2.default.createElement(
                 'h1',
-                { className: _app2.default.hello },
-                'Hello World!'
+                { className: 'src-___app__hello___2QwH_' },
+                'Hello World!!'
             );
         }
     }]);
@@ -18300,7 +18298,7 @@ module.exports = camelize;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"hello":"app__hello___2zT6h"};
+module.exports = {"hello":"src-___app__hello___2QwH_"};
 
 /***/ })
 /******/ ]);
