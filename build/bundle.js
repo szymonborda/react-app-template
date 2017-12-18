@@ -974,7 +974,7 @@ var App = function (_React$Component) {
         value: function render() {
             return _react2.default.createElement(
                 'h1',
-                { className: 'src-___app__hello___2QwH_' },
+                { className: 'app__hello___2QwH_' },
                 'Hello World!!'
             );
         }
@@ -18298,7 +18298,7 @@ module.exports = camelize;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"hello":"src-___app__hello___2QwH_"};
+module.exports = {"hello":"app__hello___2QwH_"};
 
 /***/ })
 /******/ ]);
