@@ -20,7 +20,12 @@ module.exports = {
                             [
                                 'react-css-modules',
                                 {
-                                    "generateScopedName": "[name]__[local]___[hash:base64:5]"
+                                    "generateScopedName": '[name]__[local]___[hash:base64:5]',
+                                    "filetypes": {
+                                        ".scss": {
+                                            "syntax": 'postcss-scss'
+                                        }
+                                    }
                                 }
                             ]
                         ]
@@ -28,17 +33,20 @@ module.exports = {
                 }
             },
             {
-                test: /\.css$/,
+                test: /\.(scss|sass)$/,
                 use: ExtractTextPlugin.extract({
                     use: [{
-                        loader: 'css-loader',
-                        options: {
-                            importLoaders: 1,
-                            modules: true,
-                            sourceMap: true,
-                            localIdentName: '[name]__[local]___[hash:base64:5]'
-                        }
-                    }],
+                            loader: 'css-loader',
+                            options: {
+                                importLoaders: 1,
+                                modules: true,
+                                sourceMap: true,
+                                localIdentName: '[name]__[local]___[hash:base64:5]'
+                            }
+                    },
+                        {
+                            loader: 'sass-loader'
+                          }],
                     fallback: {
                         loader: 'style-loader',
                         options: {
@@ -50,6 +58,6 @@ module.exports = {
         ]
     },
     plugins: [
-        new ExtractTextPlugin("styles.css")
+        new ExtractTextPlugin('styles.css')
     ]
 };
